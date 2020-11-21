@@ -1,0 +1,48 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>KiCad BOM Example 5</title>
+    </head>
+    <body>
+    <h1>/home/vrees/work/git-repos/Esp32LoraBoard/kicad/Esp32LoraBoard/Esp32LoraBoard.sch</h1>
+    <p>Sa 17 Okt 2020 10:00:11 CEST</p>
+    <p>Eeschema 5.1.5+dfsg1-2build2</p>
+    <p><b>Component Count:</b>53</p>
+    <table>
+    <tr><th style='width:640px'>Ref</th><th>Qnty</th><th>Value</th><th>Part</th><th>Footprint</th><th>Description</th><th>Vendor</th></tr>
+    <tr><td>AE1</td><td>1</td><td>Antenna_Shield</td><td>Device:Antenna_Shield</td><td>Connector_Coaxial:SMA_Samtec_SMA-J-P-H-ST-EM1_EdgeMount</td><td>Antenna with extra pin for shielding</td><td></td></tr>
+    <tr><td>BT1</td><td>1</td><td>LiFePo-Batterie</td><td>Device:Battery_Cell</td><td>Connector_Phoenix_MSTB:PhoenixContact_MSTBVA_2,5_2-G-5,08_1x02_P5.08mm_Vertical</td><td>Single-cell battery</td><td></td></tr>
+    <tr><td>C1, C7, C8</td><td>3</td><td>100n</td><td>Device:C</td><td>Capacitor_SMD:C_1206_3216Metric_Pad1.42x1.75mm_HandSolder</td><td>Unpolarized capacitor</td><td></td></tr>
+    <tr><td>C2</td><td>1</td><td>10u</td><td>Device:CP_Small</td><td>Capacitor_SMD:C_1206_3216Metric_Pad1.42x1.75mm_HandSolder</td><td>Polarized capacitor, small symbol</td><td></td></tr>
+    <tr><td>C3</td><td>1</td><td>1u</td><td>Device:C_Small</td><td>Capacitor_SMD:C_1206_3216Metric_Pad1.42x1.75mm_HandSolder</td><td>Unpolarized capacitor, small symbol</td><td></td></tr>
+    <tr><td>C4</td><td>1</td><td>100n</td><td>Device:C_Small</td><td>Capacitor_SMD:C_1206_3216Metric_Pad1.42x1.75mm_HandSolder</td><td>Unpolarized capacitor, small symbol</td><td></td></tr>
+    <tr><td>C5</td><td>1</td><td>220n</td><td>Device:C_Small</td><td>Capacitor_SMD:C_1206_3216Metric_Pad1.42x1.75mm_HandSolder</td><td>Unpolarized capacitor, small symbol</td><td></td></tr>
+    <tr><td>C6</td><td>1</td><td>1n</td><td>Device:C_Small</td><td>Capacitor_SMD:C_1206_3216Metric_Pad1.42x1.75mm_HandSolder</td><td>Unpolarized capacitor, small symbol</td><td></td></tr>
+    <tr><td>C9, C10</td><td>2</td><td>1u</td><td>Device:C</td><td>Capacitor_SMD:C_1206_3216Metric_Pad1.42x1.75mm_HandSolder</td><td>Unpolarized capacitor</td><td></td></tr>
+    <tr><td>J1</td><td>1</td><td>USB_B_Micro</td><td>Connector:USB_B_Micro</td><td>Connector_USB:USB_Micro-B_GCT_USB3076-30-A</td><td>USB Micro Type B connector</td><td></td></tr>
+    <tr><td>J2</td><td>1</td><td>Power-Selector</td><td>Connector:Conn_01x03_Male</td><td>Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical</td><td>Generic connector, single row, 01x03, script generated (kicad-library-utils/schlib/autogen/connector/)</td><td></td></tr>
+    <tr><td>J3</td><td>1</td><td>Testpoints</td><td>Connector:Conn_01x05_Male</td><td>Connector_PinHeader_2.54mm:PinHeader_1x05_P2.54mm_Vertical</td><td>Generic connector, single row, 01x05, script generated (kicad-library-utils/schlib/autogen/connector/)</td><td></td></tr>
+    <tr><td>J4</td><td>1</td><td>ESP_PROG_JTAG</td><td>Connector_Generic:Conn_02x05_Odd_Even</td><td>Connector_PinHeader_1.27mm:PinHeader_2x05_P1.27mm_Vertical</td><td>Generic connector, double row, 02x05, odd/even pin numbering scheme (row 1 odd numbers, row 2 even numbers), script generated (kicad-library-utils/schlib/autogen/connector/)</td><td></td></tr>
+    <tr><td>J5</td><td>1</td><td>Prog</td><td>Connector:Conn_01x05_Male</td><td>Connector_PinHeader_2.54mm:PinHeader_1x05_P2.54mm_Vertical</td><td>Generic connector, single row, 01x05, script generated (kicad-library-utils/schlib/autogen/connector/)</td><td></td></tr>
+    <tr><td>J6</td><td>1</td><td>ext_Measure</td><td>Connector:Screw_Terminal_01x04</td><td>Connector_Phoenix_MSTB:PhoenixContact_MSTBVA_2,5_4-G-5,08_1x04_P5.08mm_Vertical</td><td>Generic screw terminal, single row, 01x04, script generated (kicad-library-utils/schlib/autogen/connector/)</td><td></td></tr>
+    <tr><td>J7</td><td>1</td><td>Measurement-Selector</td><td>Connector:Conn_01x03_Male</td><td>Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical</td><td>Generic connector, single row, 01x03, script generated (kicad-library-utils/schlib/autogen/connector/)</td><td></td></tr>
+    <tr><td>J8</td><td>1</td><td>OLED_128x64</td><td>Connector:Conn_01x04_Female</td><td>Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical</td><td>Generic connector, single row, 01x04, script generated (kicad-library-utils/schlib/autogen/connector/)</td><td></td></tr>
+    <tr><td>J9</td><td>1</td><td>Pin1-to-GND</td><td>Connector:Conn_01x02_Male</td><td>Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical</td><td>Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)</td><td></td></tr>
+    <tr><td>Q1</td><td>1</td><td>UMH3N</td><td>UMH3N:UMH3N</td><td>lib_fp:SOT65P230X110-6N</td><td>2 NPN pre-biased (Dual) 100mA 50V SC-70-6(SOT-363) Digital Transistors RoHS</td><td></td></tr>
+    <tr><td>Q2, Q4, Q6</td><td>3</td><td>Si2302DS_NMOS</td><td>Device:Q_NMOS_GSD</td><td>Package_TO_SOT_SMD:TSOT-23_HandSoldering</td><td>N-MOSFET transistor, gate/source/drain</td><td></td></tr>
+    <tr><td>Q3, Q5</td><td>2</td><td>Si2301DS_PMOS</td><td>Device:Q_PMOS_GSD</td><td>Package_TO_SOT_SMD:TSOT-23_HandSoldering</td><td>P-MOSFET transistor, gate/source/drain</td><td></td></tr>
+    <tr><td>R1, R2, R3, R4, R9, R10, R11, R13, R14, R15</td><td>10</td><td>10k</td><td>Device:R</td><td>Resistor_SMD:R_1206_3216Metric_Pad1.42x1.75mm_HandSolder</td><td>Resistor</td><td></td></tr>
+    <tr><td>R5, R6</td><td>2</td><td>optional</td><td>Device:R</td><td>Resistor_SMD:R_1206_3216Metric_Pad1.42x1.75mm_HandSolder</td><td>Resistor</td><td></td></tr>
+    <tr><td>R7, R8, R12</td><td>3</td><td>100k</td><td>Device:R</td><td>Resistor_SMD:R_1206_3216Metric_Pad1.42x1.75mm_HandSolder</td><td>Resistor</td><td></td></tr>
+    <tr><td>SW1</td><td>1</td><td>Rotary_Encoder</td><td>Device:Rotary_Encoder_Switch</td><td>Rotary_Encoder:RotaryEncoder_Alps_EC11E-Switch_Vertical_H20mm</td><td>Rotary encoder, dual channel, incremental quadrate outputs, with switch</td><td></td></tr>
+    <tr><td>SW2</td><td>1</td><td>Reset</td><td>Switch:SW_Push_Dual_x2</td><td>Button_Switch_SMD:SW_SPST_CK_RS282G05A3</td><td>Push button switch, generic, separate symbols, four pins</td><td></td></tr>
+    <tr><td>U1</td><td>1</td><td>LM3940IMP-3.3</td><td>LM3940IMP-3.3:LM3940IMP-3.3</td><td>lib_fp:SOT230P696X180-4N</td><td></td><td></td></tr>
+    <tr><td>U2</td><td>1</td><td>ESP32-WROOM-32</td><td>RF_Module:ESP32-WROOM-32</td><td>RF_Module:ESP32-WROOM-32</td><td>RF Module, ESP32-D0WDQ6 SoC, Wi-Fi 802.11b/g/n, Bluetooth, BLE, 32-bit, 2.7-3.6V, onboard antenna, SMD</td><td></td></tr>
+    <tr><td>U3</td><td>1</td><td>RFM95W-868S2</td><td>RF_Module:RFM95W-868S2</td><td>RF_Module:HOPERF_RFM9XW_SMD</td><td>Low power long range transceiver module, SPI and parallel interface, 868 MHz, spreading factor 6 to12, bandwith 7.8 to 500kHz, -111 to -148 dBm, SMD-16, DIP-16</td><td></td></tr><!--TABLEROW-->
+    </table>
+    </body>
+</html>
+    
