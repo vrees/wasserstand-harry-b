@@ -7,7 +7,7 @@
 - Ubidots:    https://industrial.ubidots.com/accounts/signup_industrial/
     - Username: HarryBrender 
     - Passwort: siehe Email
-    - Email: viktor.rees@gmx.de
+    - Email: harald.brender@gmx.de
     - harryb.iot.ubidots.com
 
 

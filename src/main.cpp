@@ -16,9 +16,8 @@ extern CayenneLPP lpp;
 static TheThingsNetwork ttn;
 
 // TTN-App: public-dummy
-// const char *devEui = "CC50E3FFFE899B10";
-const char *appEui = "70B3D57ED002FB99";
-const char *appKey = "28F7CCAD7AFE1643EC96B7F52E145699";
+const char *appEui = "70B3D57ED0038968";
+const char *appKey = "683D74F80F10730F93795778DBB3B547";
 
 const unsigned TX_INTERVAL = 5;
 
