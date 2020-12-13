@@ -16,9 +16,16 @@ extern uint8_t payload[];
 
 static TheThingsNetwork ttn;
 
-// TTN-App: public-dummy
+// TTN-App: waterlevel-sensor-harryb
+
+// Senor eingebaut in Quelle
+// const char *appEui = "70B3D57ED0038968";
+// const char *appKey = "683D74F80F10730F93795778DBB3B547";
+
+// debug board zum Testen
 const char *appEui = "70B3D57ED0038968";
-const char *appKey = "683D74F80F10730F93795778DBB3B547";
+const char *appKey = "E1F6E832EAC8FA755662EF14C27FEB6C";
+
 
 const unsigned TX_INTERVAL = 5;
 
