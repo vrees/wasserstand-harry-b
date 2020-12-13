@@ -7,11 +7,12 @@
 
 #include "esp32-lora-board-pins.h"
 #include "sleep-wakeup.h"
-#include "CayenneLPP.h"
+// #include "CayenneLPP.h"
 #include "voltage.h"
 
 
-extern CayenneLPP lpp;
+// extern CayenneLPP lpp;
+extern uint8_t payload[];
 
 static TheThingsNetwork ttn;
 
@@ -76,7 +77,7 @@ void printAllRFSettings()
 void sendMessages(void *pvParameter)
 {
     // rintf("Sending message: %s\n", uploadMessage);
-    TTNResponseCode res = ttn.transmitMessage(lpp.getBuffer(), lpp.getSize());
+    TTNResponseCode res = ttn.transmitMessage(payload, PAYLOAD_LENGTH);
     printf(res == kTTNSuccessfulTransmission ? "Message sent.\n" : "Transmission failed.\n");
 
     printAllRFSettings();

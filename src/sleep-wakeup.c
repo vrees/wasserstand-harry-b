@@ -15,11 +15,9 @@
 
 #define MICROSEC_TO_SEC_FACTOR 1000000 /* Conversion factor for micro seconds to seconds */
 
-#define SLEEP_TIME_NORMAL_SEC 29 * 60
-#define SLEEP_TIME_LOW_LEVEL_SEC 15 * 60
-
-// #define SLEEP_TIME_NORMAL_SEC 20
-// #define SLEEP_TIME_LOW_LEVEL_SEC 5
+#define SLEEP_TIME_NORMAL_SEC  6 * 60 *60  // 6 Stunden
+// #define SLEEP_TIME_NORMAL_SEC 2 * 24 * 60 *60  //  Tage
+#define SLEEP_TIME_LOW_LEVEL_SEC 15 * 60  // alle 15 Minuten
 
 operation_mode_t operation_mode = TIMER_WAKEUP;
 RTC_DATA_ATTR int bootCount = 0;
@@ -115,7 +113,7 @@ void powerOffAndSleep()
     sleepTimeInSeconds = SLEEP_TIME_LOW_LEVEL_SEC;
   }
 
-  esp_sleep_enable_timer_wakeup(sleepTimeInSeconds * MICROSEC_TO_SEC_FACTOR);
+  esp_sleep_enable_timer_wakeup((uint64_t) sleepTimeInSeconds * MICROSEC_TO_SEC_FACTOR);
   printf("Setup ESP32 to sleep next %i in seconds\n", sleepTimeInSeconds);
 
   printf("Going to sleep now\n");

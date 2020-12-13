@@ -1,7 +1,6 @@
 #include <driver/adc.h>
 #include <math.h>
 #include "esp32-lora-board-pins.h"
-#include "CayenneLPP.h"
 #include "voltage.h"
 #include "sleep-wakeup.h"
 
@@ -14,12 +13,9 @@ extern "C"
   int adc_reading_42V = 0;
   int adc_reading_33V = 0;
 
-  // WaterLevel Harry: Use GPIO_NUM_35=U_EXT_MEASURE as digital input. So it cannot be used for adc operations
-#define USE_GPIO35_DIGITAL_IN
+  uint8_t payload[PAYLOAD_LENGTH];
 
-  CayenneLPP lpp(20);
-
-/*   Polynom bestimmt aus den folgenden ADC- und Spannungs-Werten 
+  /*   Polynom bestimmt aus den folgenden ADC- und Spannungs-Werten 
       3.665  4.2
       3.296  3.8
       2.916  3.4
@@ -35,11 +31,6 @@ extern "C"
   {
     adc1_config_width(ADC_WIDTH_BIT_12);
     adc1_config_channel_atten(ADC1_CHANNEL_6, ADC_ATTEN_DB_6); // VCC Voltage
-
-#ifndef USE_GPIO35_DIGITAL_IN
-    // WaterLevel Harry: Use GPIO_NUM_35=U_EXT_MEASURE as digital input. So it cannot be used for adc operations
-    adc1_config_channel_atten(ADC1_CHANNEL_7, ADC_ATTEN_DB_6); // external Voltage
-#endif
   }
 
   int readRoundedAdc(adc1_channel_t channel)
@@ -87,32 +78,34 @@ extern "C"
     return gpio_get_level(GPIO_NUM_35) == 0 ? LOW : HIGH;
   }
 
+  void decodeToPayload(water_level_t waterLevel, float vccVoltage)
+  {
+    payload[0] = waterLevel;
+
+    int16_t val = vccVoltage * 100;
+    payload[1] = val >> 8;
+    payload[2] = val;
+
+    payload[3] = operation_mode;
+  }
+
   void readSensorValues()
   {
     initVoltage();
 
     // read VCC Voltage (3.3 Volt)
     adc_reading_33V = readRoundedAdc(ADC1_CHANNEL_6);
-    float vccVoltage =  calulateVoltageCompensated(adc_reading_33V, module2_33Volt);    
+    float vccVoltage = calulateVoltageCompensated(adc_reading_33V, module2_33Volt);
     // float vccVoltage = (float)adc_reading_33V * 2 * 2.2 / 4095; // wegen ADC_ATTEN_DB_6
 
     printf("VCC-Voltage: %f Volt)\n", vccVoltage);
 
-    lpp.reset();
-#ifdef USE_GPIO35_DIGITAL_IN
     // WaterLevel Harry: Use GPIO_NUM_35=U_EXT_MEASURE as digital input. So it cannot be used for adc operations
     // read LiPo Voltage (max 4.2 Volt)
     water_level_t waterLevel = getWaterLevel();
     printf("Water Level is %s  %i \n", waterLevel == HIGH ? "High" : "LOW", waterLevel);
-    lpp.addDigitalInput(0, waterLevel);
-    lpp.addAnalogInput(1, vccVoltage);
-#else
-  adc_reading_42V = readRoundedAdc(ADC1_CHANNEL_7);
-  float externalVoltage = calulateVoltageCompensated(adc_reading_42V);
-  printf("External Voltage: %f Volt, \n", externalVoltage);
-  lpp.addAnalogInput(0, vccVoltage);
-  lpp.addAnalogInput(1, externalVoltage);
-#endif
+
+    decodeToPayload(waterLevel, vccVoltage);
   }
 
 #ifdef __cplusplus
