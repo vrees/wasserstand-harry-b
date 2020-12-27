@@ -14,6 +14,7 @@ extern "C"
   int adc_reading_33V = 0;
 
   uint8_t payload[PAYLOAD_LENGTH];
+  sensor_values_t sensor_values;
 
   /*   Polynom bestimmt aus den folgenden ADC- und Spannungs-Werten 
       3.665  4.2
@@ -78,7 +79,7 @@ extern "C"
     return gpio_get_level(GPIO_NUM_35) == 0 ? LOW : HIGH;
   }
 
-  void decodeToPayload(water_level_t waterLevel, float vccVoltage)
+  void decodeToPayload(water_level_t waterLevel, float vccVoltage, int16_t bootCount)
   {
     payload[0] = waterLevel;
 
@@ -87,6 +88,8 @@ extern "C"
     payload[2] = val;
 
     payload[3] = operation_mode;
+    payload[4] = bootCount >> 8;
+    payload[5] = bootCount;
   }
 
   void readSensorValues()
@@ -95,17 +98,17 @@ extern "C"
 
     // read VCC Voltage (3.3 Volt)
     adc_reading_33V = readRoundedAdc(ADC1_CHANNEL_6);
-    float vccVoltage = calulateVoltageCompensated(adc_reading_33V, module2_33Volt);
+    sensor_values.vccVoltage = calulateVoltageCompensated(adc_reading_33V, module2_33Volt);
     // float vccVoltage = (float)adc_reading_33V * 2 * 2.2 / 4095; // wegen ADC_ATTEN_DB_6
 
-    printf("VCC-Voltage: %f Volt)\n", vccVoltage);
+    printf("VCC-Voltage: %f Volt)\n", sensor_values.vccVoltage);
 
     // WaterLevel Harry: Use GPIO_NUM_35=U_EXT_MEASURE as digital input. So it cannot be used for adc operations
     // read LiPo Voltage (max 4.2 Volt)
     water_level_t waterLevel = getWaterLevel();
     printf("Water Level is %s  %i \n", waterLevel == HIGH ? "High" : "LOW", waterLevel);
 
-    decodeToPayload(waterLevel, vccVoltage);
+    decodeToPayload(sensor_values.waterLevel, sensor_values.vccVoltage, sensor_values.bootCount);
   }
 
 #ifdef __cplusplus

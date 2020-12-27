@@ -69,6 +69,7 @@ void wakeupAndInit()
 {
   //Increment boot number and print it every reboot
   ++bootCount;
+  sensor_values.bootCount = bootCount;
   printf("wakeup(). Boot number: %d\n", bootCount);
 
   //Print the wakeup reason for ESP32
