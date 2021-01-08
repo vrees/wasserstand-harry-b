@@ -105,8 +105,8 @@ extern "C"
 
     // WaterLevel Harry: Use GPIO_NUM_35=U_EXT_MEASURE as digital input. So it cannot be used for adc operations
     // read LiPo Voltage (max 4.2 Volt)
-    water_level_t waterLevel = getWaterLevel();
-    printf("Water Level is %s  %i \n", waterLevel == HIGH ? "High" : "LOW", waterLevel);
+    sensor_values.waterLevel = getWaterLevel();
+    printf("Water Level is %s  %i \n", sensor_values.waterLevel == HIGH ? "High" : "LOW", sensor_values.waterLevel);
 
     decodeToPayload(sensor_values.waterLevel, sensor_values.vccVoltage, sensor_values.bootCount);
   }
