@@ -14,9 +14,10 @@ extern "C"
     } operation_mode_t;
 
     extern operation_mode_t operation_mode;
+    extern int execTooLongCount;
 
     void wakeupAndInit();
-    void powerOffAndSleep();
+    void powerOffAndSleep(bool rebootImmediately);
 
 #ifdef __cplusplus
 }

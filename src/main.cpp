@@ -7,8 +7,8 @@
 
 #include "esp32-lora-board-pins.h"
 #include "sleep-wakeup.h"
-// #include "CayenneLPP.h"
 #include "voltage.h"
+#include "timer.h"
 
 
 // extern CayenneLPP lpp;
@@ -82,8 +82,9 @@ void printAllRFSettings()
 }
 
 void sendMessages(void *pvParameter)
-{
-    // rintf("Sending message: %s\n", uploadMessage);
+{        
+    initExecutionTimer();
+
     TTNResponseCode res = ttn.transmitMessage(payload, PAYLOAD_LENGTH);
     printf(res == kTTNSuccessfulTransmission ? "Message sent.\n" : "Transmission failed.\n");
 
@@ -92,7 +93,7 @@ void sendMessages(void *pvParameter)
     vTaskDelay(TX_INTERVAL * 1000 / portTICK_PERIOD_MS);
 
     ttn.shutdown();
-    powerOffAndSleep();
+    powerOffAndSleep(false);
 }
 
 void messageReceived(const uint8_t *message, size_t length, port_t port)

@@ -15,12 +15,15 @@
 
 #define MICROSEC_TO_SEC_FACTOR 1000000 /* Conversion factor for micro seconds to seconds */
 
-#define SLEEP_TIME_NORMAL_SEC  6 * 60 *60  // 6 Stunden
+#define SLEEP_TIME_NORMAL_SEC  4 *60  
 // #define SLEEP_TIME_NORMAL_SEC 2 * 24 * 60 *60  //  Tage
-#define SLEEP_TIME_LOW_LEVEL_SEC 15 * 60  // alle 15 Minuten
+#define SLEEP_TIME_LOW_LEVEL_SEC 2 * 60  
+// #define SLEEP_TIME_LOW_LEVEL_SEC 15 * 60  // alle 15 Minuten
+#define SLEEP_TIME_IMMEDIATE_WAKEUP 5  // reboot if tranmission is not successful in between 20 seconds
 
 operation_mode_t operation_mode = TIMER_WAKEUP;
 RTC_DATA_ATTR int bootCount = 0;
+RTC_DATA_ATTR int execTooLongCount = 0;
 
 /*
 Method to print the reason by which ESP32
@@ -70,6 +73,7 @@ void wakeupAndInit()
   //Increment boot number and print it every reboot
   ++bootCount;
   sensor_values.bootCount = bootCount;
+  sensor_values.execTooLongCount = execTooLongCount;
   printf("wakeup(). Boot number: %d\n", bootCount);
 
   //Print the wakeup reason for ESP32
@@ -91,7 +95,7 @@ void wakeupAndInit()
     } */
 }
 
-void powerOffAndSleep()
+void powerOffAndSleep(bool rebootImmediately)
 {
   printf("Preparing for deep sleep\n");
 
@@ -112,6 +116,10 @@ void powerOffAndSleep()
   {
     esp_sleep_enable_ext0_wakeup(GPIO_NUM_35, 1);
     sleepTimeInSeconds = SLEEP_TIME_LOW_LEVEL_SEC;
+  }
+
+  if (rebootImmediately) {
+    sleepTimeInSeconds = SLEEP_TIME_IMMEDIATE_WAKEUP;
   }
 
   esp_sleep_enable_timer_wakeup((uint64_t) sleepTimeInSeconds * MICROSEC_TO_SEC_FACTOR);

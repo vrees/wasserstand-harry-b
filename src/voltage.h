@@ -6,7 +6,7 @@ extern "C"
 {
 #endif
 
-#define PAYLOAD_LENGTH 6
+#define PAYLOAD_LENGTH 8
 
     typedef enum
     {
@@ -28,6 +28,7 @@ extern "C"
         water_level_t waterLevel;
         float vccVoltage;
         int bootCount;
+        int execTooLongCount;
     } sensor_values_t;
 
     void readSensorValues();

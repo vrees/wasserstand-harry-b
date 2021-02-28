@@ -79,7 +79,7 @@ extern "C"
     return gpio_get_level(GPIO_NUM_35) == 0 ? LOW : HIGH;
   }
 
-  void decodeToPayload(water_level_t waterLevel, float vccVoltage, int16_t bootCount)
+  void decodeToPayload(water_level_t waterLevel, float vccVoltage, int16_t bootCount, int16_t execTooLongCount)
   {
     payload[0] = waterLevel;
 
@@ -90,6 +90,8 @@ extern "C"
     payload[3] = operation_mode;
     payload[4] = bootCount >> 8;
     payload[5] = bootCount;
+    payload[6] = execTooLongCount >> 8;
+    payload[7] = execTooLongCount;
   }
 
   void readSensorValues()
@@ -108,7 +110,7 @@ extern "C"
     sensor_values.waterLevel = getWaterLevel();
     printf("Water Level is %s  %i \n", sensor_values.waterLevel == HIGH ? "High" : "LOW", sensor_values.waterLevel);
 
-    decodeToPayload(sensor_values.waterLevel, sensor_values.vccVoltage, sensor_values.bootCount);
+    decodeToPayload(sensor_values.waterLevel, sensor_values.vccVoltage, sensor_values.bootCount, sensor_values.execTooLongCount);
   }
 
 #ifdef __cplusplus
