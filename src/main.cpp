@@ -10,7 +10,6 @@
 #include "voltage.h"
 #include "timer.h"
 
-
 // extern CayenneLPP lpp;
 extern uint8_t payload[];
 
@@ -25,7 +24,6 @@ const char *appKey = "683D74F80F10730F93795778DBB3B547";
 // debug board zum Testen
 // const char *appEui = "70B3D57ED0038968";
 // const char *appKey = "E1F6E832EAC8FA755662EF14C27FEB6C";
-
 
 const unsigned TX_INTERVAL = 5;
 
@@ -82,7 +80,7 @@ void printAllRFSettings()
 }
 
 void sendMessages(void *pvParameter)
-{        
+{
     initExecutionTimer();
 
     TTNResponseCode res = ttn.transmitMessage(payload, PAYLOAD_LENGTH);

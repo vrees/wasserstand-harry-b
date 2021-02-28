@@ -130,6 +130,7 @@ static void timer_example_evt_task(void *arg)
         timer_event_t evt;
         xQueueReceive(timer_queue, &evt, portMAX_DELAY);
         ++execTooLongCount;
+        ++bootCount;
         powerOffAndSleep(true);
     }
 }

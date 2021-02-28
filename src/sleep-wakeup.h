@@ -15,6 +15,7 @@ extern "C"
 
     extern operation_mode_t operation_mode;
     extern int execTooLongCount;
+    extern int bootCount;
 
     void wakeupAndInit();
     void powerOffAndSleep(bool rebootImmediately);
