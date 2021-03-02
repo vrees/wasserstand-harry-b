@@ -17,7 +17,7 @@
 
 #define TIMER_DIVIDER 16                             //  Hardware timer clock divider
 #define TIMER_SCALE (TIMER_BASE_CLK / TIMER_DIVIDER) // convert counter value to seconds
-#define TIMER_INTERVAL0_SEC (30.0)                    // sample test interval for the first timer
+#define TIMER_INTERVAL0_SEC (20.0)                   // sample test interval for the first timer
 
 /*
  * A sample structure to pass events
@@ -143,4 +143,9 @@ void initExecutionTimer()
     timer_queue = xQueueCreate(10, sizeof(timer_event_t));
     tg0_timer_init(TIMER_0, TIMER_INTERVAL0_SEC);
     xTaskCreate(timer_example_evt_task, "timer_evt_task", 2048, NULL, 5, NULL);
+}
+
+void stopExecutionTimer()
+{
+    timer_disable_intr(TIMER_GROUP_0, TIMER_0);
 }

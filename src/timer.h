@@ -7,6 +7,7 @@ extern "C"
 #endif
 
     void initExecutionTimer();
+    void stopExecutionTimer();
 
 #ifdef __cplusplus
 }

@@ -82,8 +82,9 @@ void printAllRFSettings()
 void sendMessages(void *pvParameter)
 {
     initExecutionTimer();
-
     TTNResponseCode res = ttn.transmitMessage(payload, PAYLOAD_LENGTH);
+    stopExecutionTimer();
+
     printf(res == kTTNSuccessfulTransmission ? "Message sent.\n" : "Transmission failed.\n");
 
     printAllRFSettings();
