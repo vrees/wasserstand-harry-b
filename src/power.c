@@ -66,13 +66,13 @@ void disableBatteryVoltageMeasurement()
 void enableExternalVoltageMeasurement()
 {
     printf("Enabling External Voltage Measurement\n");
-    gpio_set_level((gpio_num_t)U_EXT_ENABLE, 1);
+    gpio_set_level((gpio_num_t)U_EXT_ENABLE, 0);
 }
 
 void disableExternalVoltageMeasurement()
 {
     printf("Disabling External Voltage Measurement\n");
-    gpio_set_level((gpio_num_t)U_EXT_ENABLE, 0);
+    gpio_set_level((gpio_num_t)U_EXT_ENABLE, 1);
 }
 
 #ifdef __cplusplus

@@ -107,12 +107,12 @@ void powerOffAndSleep(bool rebootImmediately)
   if (getWaterLevel() == HIGH)
   {
     // if sensor detects low water level wakeup process is started
-    esp_sleep_enable_ext0_wakeup(GPIO_NUM_35, 0);
+    esp_sleep_enable_ext0_wakeup(WATER_LEVEL_PIN, 0);
     sleepTimeInSeconds = SLEEP_TIME_NORMAL_SEC;
   }
   else
   {
-    esp_sleep_enable_ext0_wakeup(GPIO_NUM_35, 1);
+    esp_sleep_enable_ext0_wakeup(WATER_LEVEL_PIN, 1);
     sleepTimeInSeconds = SLEEP_TIME_LOW_LEVEL_SEC;
   }
 

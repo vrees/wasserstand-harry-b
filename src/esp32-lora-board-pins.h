@@ -30,18 +30,19 @@
 #define JTAG_TMS        (14)
 #define JTAG_TDO        (15)
 
+// IO
+#define ROTARY_SWITCH   (17)
+#define ROTARY_A        (36)
+#define ROTARY_B        (39)
+#define RESERVED        (2)
+
 // Control Pins
 #define POWER_ENABLE    (16)
 #define U_EXT_ENABLE    (4)
 #define U_EXT_MEASURE   (35)    // ADC1_CHANNEL_7
 #define U_BAT_ENABLE     (25)
 #define U_BAT_MEASURE    (34)   // ADC1_CHANNEL_6
-
-// IO
-#define ROTARY_SWITCH   (17)
-#define ROTARY_A        (36)
-#define ROTARY_B        (39)
-#define RESERVED        (2)
+#define WATER_LEVEL_PIN  GPIO_NUM_36   // ROTARY_A
 
 // I2C Bus
 #define I2C_SDA         (21)
