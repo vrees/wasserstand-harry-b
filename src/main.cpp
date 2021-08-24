@@ -18,6 +18,8 @@ static TheThingsNetwork ttn;
 // TTN-App: waterlevel-sensor-harryb
 
 // Senor eingebaut in Quelle
+// OTAA credentials
+// DevEUI is derived from the MAC Adress of the devices network device
 const char *appEui = "70B3D57ED0038968";
 const char *appKey = "683D74F80F10730F93795778DBB3B547";
 
