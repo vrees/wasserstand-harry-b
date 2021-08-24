@@ -5,7 +5,7 @@
 #include "esp32-lora-board-pins.h"
 
 #define GPIO_OUTPUT_PIN_SEL ((1ULL << POWER_ENABLE) | (1ULL << U_EXT_ENABLE) | (1ULL << U_BAT_ENABLE))
-#define GPIO_INPUT_PIN_SEL ((1ULL << U_EXT_MEASURE) | (1ULL << U_BAT_MEASURE))
+#define GPIO_INPUT_PIN_SEL ((1ULL << U_EXT_MEASURE) | (1ULL << U_BAT_MEASURE) | (1ULL << WATER_LEVEL_PIN))
 
 #ifdef __cplusplus
 extern "C"

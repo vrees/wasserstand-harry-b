@@ -5,4 +5,5 @@
 .vscode/ipch
 build
 lib
-
+components/ttn-esp32/*
+sdkconfig.ttgo-lora32-v1.old
