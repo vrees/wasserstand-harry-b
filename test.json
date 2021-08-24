@@ -1,6 +1,6 @@
 {
     "_parameters": {
-        "token": "BBFF-tYfIo8DvBTvp7mpIWyoNliwTVl5szUfLhkeAJR7TDuYJkEY63hpZLHh",
+        "token": "....", 
         "version": "60b6acb81d84727e3d898669",
         "device_type": "tts-devices",
         "plugin_version_id": "6123531050befa09510a8878",
@@ -28,7 +28,7 @@
         "join_eui": "70B3D57ED0038968"
     },
     "received_at": "2021-08-24T08:10:20.913364126Z",
-    "token": "BBFF-sRkGy0co5bd6bFax2JXm2wCSPjdcyk",
+    "token": "....",
     "uplink_message": {
         "consumed_airtime": "0.056576s",
         "decoded_payload": {
@@ -66,7 +66,7 @@
                 "rssi": -31,
                 "snr": 7.5,
                 "timestamp": 3541111235,
-                "uplink_token": "CigKJgoaYnVlaGwtaG9mc2dydW5kLWdhdGV3YXktdjMSCLgn6//+bfWUEMOjxJgNGgwI7NKSiQYQw8nrzwIguMO11Ydn"
+                "uplink_token": "...."
             }
         ],
         "session_key_id": "AXt3Nb25WDZMpyj7T4noWA==",
