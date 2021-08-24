@@ -19,6 +19,7 @@ to
 ```
 
 Schema of the board from Charles Hallard: https://raw.githubusercontent.com/hallard/RAK831-Zero/master/pictures/PiZero-RAK-sch.png
+https://github.com/hallard/RAK831-Zero/
 
 ```
 cd /opt/ttn-gateway/lora_gateway

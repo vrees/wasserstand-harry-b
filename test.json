@@ -1,0 +1,86 @@
+{
+    "_parameters": {
+        "token": "BBFF-tYfIo8DvBTvp7mpIWyoNliwTVl5szUfLhkeAJR7TDuYJkEY63hpZLHh",
+        "version": "60b6acb81d84727e3d898669",
+        "device_type": "tts-devices",
+        "plugin_version_id": "6123531050befa09510a8878",
+        "is_new_webhook_url": true,
+        "_plugin_env_BASE_URL": "https://industrial.api.ubidots.com",
+        "_plugin_env_tti_main_color": "#0040E5",
+        "_plugin_env_tti_secondary_color": "#6C95FF"
+    },
+    "correlation_ids": [
+        "as:up:01FDVKBMBGFV660RPEPQMZMHBB",
+        "gs:conn:01FDVFW031CRT7WP3E3042T96Q",
+        "gs:up:host:01FDVFW03ABZW3EJR16BGED132",
+        "gs:uplink:01FDVKBM500QZWJYXGSD0KA4SC",
+        "ns:uplink:01FDVKBM52868YGFGW4DSBNM24",
+        "rpc:/ttn.lorawan.v3.GsNs/HandleUplink:01FDVKBM525KZD1GPK46CDBNBG",
+        "rpc:/ttn.lorawan.v3.NsAs/HandleUplink:01FDVKBMBF3KK9X25E14E0408M"
+    ],
+    "end_device_ids": {
+        "application_ids": {
+            "application_id": "harryb-water-level"
+        },
+        "dev_addr": "260BF624",
+        "dev_eui": "30AEA4FFFEF932FC",
+        "device_id": "waterlevel-sensor-harryb",
+        "join_eui": "70B3D57ED0038968"
+    },
+    "received_at": "2021-08-24T08:10:20.913364126Z",
+    "token": "BBFF-sRkGy0co5bd6bFax2JXm2wCSPjdcyk",
+    "uplink_message": {
+        "consumed_airtime": "0.056576s",
+        "decoded_payload": {
+            "BatterieSpannung": 3.94,
+            "BootCount": 2,
+            "ExecutionTooLongCount": 0,
+            "HeartBeat": 0,
+            "WakeupBy": 2,
+            "Wasserstand": 1
+        },
+        "f_port": 1,
+        "frm_payload": "AQGKAgACAAA=",
+        "locations": {
+            "user": {
+                "altitude": 1050,
+                "latitude": 47.898601161934,
+                "longitude": 7.8997707366943,
+                "source": "SOURCE_REGISTRY"
+            }
+        },
+        "network_ids": {
+            "cluster_id": "ttn-eu1",
+            "net_id": "000013",
+            "tenant_id": "ttn"
+        },
+        "received_at": "2021-08-24T08:10:20.706109848Z",
+        "rx_metadata": [
+            {
+                "channel_index": 2,
+                "channel_rssi": -31,
+                "gateway_ids": {
+                    "eui": "B827EBFFFE6DF594",
+                    "gateway_id": "buehl-hofsgrund-gateway-v3"
+                },
+                "rssi": -31,
+                "snr": 7.5,
+                "timestamp": 3541111235,
+                "uplink_token": "CigKJgoaYnVlaGwtaG9mc2dydW5kLWdhdGV3YXktdjMSCLgn6//+bfWUEMOjxJgNGgwI7NKSiQYQw8nrzwIguMO11Ydn"
+            }
+        ],
+        "session_key_id": "AXt3Nb25WDZMpyj7T4noWA==",
+        "settings": {
+            "coding_rate": "4/5",
+            "data_rate": {
+                "lora": {
+                    "bandwidth": 125000,
+                    "spreading_factor": 7
+                }
+            },
+            "data_rate_index": 5,
+            "frequency": "868500000",
+            "timestamp": 3541111235
+        }
+    }
+}
