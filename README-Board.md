@@ -82,7 +82,7 @@ Spannung am LiPo-Akku: 4.13 Volt
 |  | 3.8 | -0.1 | 0.45 | 3.66 | |
 |  | 4.0 | -0.1 | 0.27 | 3.84 | |
 | Sonne scheint | 5.0 | -0.1 | 0.6 | 4.72 | Akku wird geladen |
-| Sonne scheint hell | 6.0 | -0.1 | 1.7 | 4.84 | Akku wird geladen |
+| Sonne scheint hell | 6.0 | -0.1 | 1.7 | 5.84 | Akku wird geladen |
 
 
 * Die Diodenspannung is auch gleich der Ugs, aber in umgepolter Richtung. D.h. wenn der FET leitet, sperrt die Diode. Wenn die Diode leitet (PowerPath) sperrt der FET
