@@ -20,12 +20,15 @@ static TheThingsNetwork ttn;
 // Senor eingebaut in Quelle
 // OTAA credentials
 // DevEUI is derived from the MAC Adress of the devices network device
+
+// Sensor Harry Quelle
 const char *appEui = "70B3D57ED0038968";
 const char *appKey = "683D74F80F10730F93795778DBB3B547";
 
-// debug board zum Testen
-// const char *appEui = "70B3D57ED0038968";
-// const char *appKey = "E1F6E832EAC8FA755662EF14C27FEB6C";
+// Debug board zum Testen: board-v12-3c-71-bf
+// Dev_EUI: 3C_71_BF_FF_FE_4C_FC_18
+// const char *appEui = "70B3D57ED004BE30";
+// const char *appKey = "2D4DC83E1A37050E44F4699D0BB7012A";
 
 const unsigned TX_INTERVAL = 5;
 
