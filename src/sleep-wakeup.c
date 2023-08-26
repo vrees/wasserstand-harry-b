@@ -97,23 +97,17 @@ void wakeupAndInit()
 
 int enableWakeupOnSensorChange()
 {
-  int sleepTimeInSeconds = SLEEP_TIME_NORMAL_SEC;
-
-  if (gpio_get_level(WATER_LEVEL_SENSOR_UP) == 0)
+  if (gpio_get_level(WATER_LEVEL_SENSOR) == 1)
   {
-    sleepTimeInSeconds = SLEEP_TIME_LOW_LEVEL_SEC;
-  }
-
-  if (gpio_get_level(WATER_LEVEL_SENSOR_DOWN) == 1)
-  {
-    esp_sleep_enable_ext0_wakeup(WATER_LEVEL_SENSOR_DOWN, 0);
+    esp_sleep_enable_ext0_wakeup(WATER_LEVEL_SENSOR, 0);
+    return SLEEP_TIME_LOW_LEVEL_SEC;
   }
   else
   {
-    esp_sleep_enable_ext0_wakeup(WATER_LEVEL_SENSOR_DOWN, 1);
-  }
+    esp_sleep_enable_ext0_wakeup(WATER_LEVEL_SENSOR, 1);
+    return SLEEP_TIME_NORMAL_SEC;
 
-  return sleepTimeInSeconds;
+  }
 }
 
 void powerOffAndSleep(bool rebootImmediately)

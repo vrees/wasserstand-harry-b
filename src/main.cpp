@@ -10,6 +10,7 @@
 #include "sleep-wakeup.h"
 #include "voltage.h"
 #include "timer.h"
+#include "esp_log.h"
 
 // extern CayenneLPP lpp;
 extern uint8_t payload[];
@@ -95,7 +96,7 @@ void sendMessages(void *pvParameter)
 
     printAllRFSettings();
 
-    vTaskDelay(TX_INTERVAL * 1000 / portTICK_PERIOD_MS);
+    vTaskDelay(TX_INTERVAL * 200 / portTICK_PERIOD_MS);
 
     ttn.waitForIdle();
     ttn.prepareForDeepSleep();
@@ -126,8 +127,8 @@ void showMacAddress()
 
 extern "C" void app_main(void)
 {
+    vTaskDelay(200 / portTICK_PERIOD_MS); // Take some time to open up the Serial Monitor
     printf("Start app on ESP32LoraBoard\n");
-    vTaskDelay(1000 / portTICK_PERIOD_MS); // Take some time to open up the Serial Monitor
 
     wakeupAndInit();
 
