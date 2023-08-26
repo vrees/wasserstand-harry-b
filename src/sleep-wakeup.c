@@ -15,9 +15,9 @@
 
 #define MICROSEC_TO_SEC_FACTOR 1000000 /* Conversion factor for micro seconds to seconds */
 
-#define SLEEP_TIME_NORMAL_SEC 2 * 24 * 60 * 60 //  Tage
-#define SLEEP_TIME_LOW_LEVEL_SEC 15 * 60       // alle 15 Minuten
-#define SLEEP_TIME_IMMEDIATE_WAKEUP 5          // reboot if tranmission is not successful in between 20 seconds
+#define SLEEP_TIME_NORMAL_SEC 2 * 24 * 60 *60    //  Tage
+#define SLEEP_TIME_LOW_LEVEL_SEC 5 * 60 // alle 5 Minuten
+#define SLEEP_TIME_IMMEDIATE_WAKEUP 5   // reboot if tranmission is not successful in between 20 seconds
 
 #define WAKEUP_MASK ((1ULL << WATER_LEVEL_SENSOR_LOW) | (1ULL << WATER_LEVEL_SENSOR_HIGH))
 
@@ -100,13 +100,12 @@ int enableWakeupOnSensorChange()
   if (gpio_get_level(WATER_LEVEL_SENSOR) == 1)
   {
     esp_sleep_enable_ext0_wakeup(WATER_LEVEL_SENSOR, 0);
-    return SLEEP_TIME_LOW_LEVEL_SEC;
+    return SLEEP_TIME_NORMAL_SEC;
   }
   else
   {
     esp_sleep_enable_ext0_wakeup(WATER_LEVEL_SENSOR, 1);
-    return SLEEP_TIME_NORMAL_SEC;
-
+    return SLEEP_TIME_LOW_LEVEL_SEC;
   }
 }
 
