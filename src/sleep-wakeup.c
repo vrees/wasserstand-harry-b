@@ -15,9 +15,11 @@
 
 #define MICROSEC_TO_SEC_FACTOR 1000000 /* Conversion factor for micro seconds to seconds */
 
-#define SLEEP_TIME_NORMAL_SEC 2 * 24 * 60 *60  //  Tage
-#define SLEEP_TIME_LOW_LEVEL_SEC 15 * 60  // alle 15 Minuten
-#define SLEEP_TIME_IMMEDIATE_WAKEUP 5  // reboot if tranmission is not successful in between 20 seconds
+#define SLEEP_TIME_NORMAL_SEC 2 * 24 * 60 * 60 //  Tage
+#define SLEEP_TIME_LOW_LEVEL_SEC 15 * 60       // alle 15 Minuten
+#define SLEEP_TIME_IMMEDIATE_WAKEUP 5          // reboot if tranmission is not successful in between 20 seconds
+
+#define WAKEUP_MASK ((1ULL << WATER_LEVEL_SENSOR_LOW) | (1ULL << WATER_LEVEL_SENSOR_HIGH))
 
 operation_mode_t operation_mode = TIMER_WAKEUP;
 RTC_DATA_ATTR int bootCount = 0;
@@ -42,7 +44,7 @@ void printWakeupReason()
     printf("Wakeup caused by timer\n");
     operation_mode = TIMER_WAKEUP;
     break;
-    /*   
+    /*
   case ESP_SLEEP_WAKEUP_EXT1:
     printf("Wakeup caused by external signal using RTC_CNTL\n");
     break;
@@ -68,13 +70,13 @@ void printWakeupReason()
 
 void wakeupAndInit()
 {
-  //Increment boot number and print it every reboot
+  // Increment boot number and print it every reboot
   ++bootCount;
   sensor_values.bootCount = bootCount;
   sensor_values.execTooLongCount = execTooLongCount;
   printf("wakeup(). Boot number: %d\n", bootCount);
 
-  //Print the wakeup reason for ESP32
+  // Print the wakeup reason for ESP32
   printWakeupReason();
 
   // define output level before port config to ensure unwanted glitch
@@ -83,14 +85,35 @@ void wakeupAndInit()
   enableExternalVoltageMeasurement();
   initIoPorts();
 
-  /* 
+  /*
     for (size_t i = 0; i < 100; i++)
     {
       disablePeripheralPower();
       vTaskDelay(2000);
       enablePeripheralPower();
-      vTaskDelay(2000);      
+      vTaskDelay(2000);
     } */
+}
+
+int enableWakeupOnSensorChange()
+{
+  int sleepTimeInSeconds = SLEEP_TIME_NORMAL_SEC;
+
+  if (gpio_get_level(WATER_LEVEL_SENSOR_UP) == 0)
+  {
+    sleepTimeInSeconds = SLEEP_TIME_LOW_LEVEL_SEC;
+  }
+
+  if (gpio_get_level(WATER_LEVEL_SENSOR_DOWN) == 1)
+  {
+    esp_sleep_enable_ext0_wakeup(WATER_LEVEL_SENSOR_DOWN, 0);
+  }
+  else
+  {
+    esp_sleep_enable_ext0_wakeup(WATER_LEVEL_SENSOR_DOWN, 1);
+  }
+
+  return sleepTimeInSeconds;
 }
 
 void powerOffAndSleep(bool rebootImmediately)
@@ -102,25 +125,14 @@ void powerOffAndSleep(bool rebootImmediately)
   disableBatteryVoltageMeasurement();
   vTaskDelay(1000 / portTICK_PERIOD_MS);
 
-  int sleepTimeInSeconds;
+  int sleepTimeInSeconds = enableWakeupOnSensorChange();
 
-  if (getWaterLevel() == HIGH)
+  if (rebootImmediately)
   {
-    // if sensor detects low water level wakeup process is started
-    esp_sleep_enable_ext0_wakeup(WATER_LEVEL_PIN, 0);
-    sleepTimeInSeconds = SLEEP_TIME_NORMAL_SEC;
-  }
-  else
-  {
-    esp_sleep_enable_ext0_wakeup(WATER_LEVEL_PIN, 1);
-    sleepTimeInSeconds = SLEEP_TIME_LOW_LEVEL_SEC;
-  }
-
-  if (rebootImmediately) {
     sleepTimeInSeconds = SLEEP_TIME_IMMEDIATE_WAKEUP;
   }
 
-  esp_sleep_enable_timer_wakeup((uint64_t) sleepTimeInSeconds * MICROSEC_TO_SEC_FACTOR);
+  esp_sleep_enable_timer_wakeup((uint64_t)sleepTimeInSeconds * MICROSEC_TO_SEC_FACTOR);
   printf("Setup ESP32 to sleep next %i in seconds\n", sleepTimeInSeconds);
 
   printf("Going to sleep now\n");

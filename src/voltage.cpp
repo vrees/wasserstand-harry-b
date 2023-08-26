@@ -76,7 +76,15 @@ extern "C"
 
   water_level_t getWaterLevel()
   {
-    return gpio_get_level(WATER_LEVEL_PIN) == 0 ? LOW : HIGH;
+    printf("Sensor oben: %i\n", gpio_get_level(WATER_LEVEL_SENSOR_UP));
+    printf("Sensor unten: %i\n", gpio_get_level(WATER_LEVEL_SENSOR_DOWN));
+
+    if (gpio_get_level(WATER_LEVEL_SENSOR_DOWN) == 0)
+      return LOW_0_PERCENT;
+    else if (gpio_get_level(WATER_LEVEL_SENSOR_UP) == 1)
+      return HIGH_100_PERCENT;
+    else
+      return MEDIUM_50_PERCENT;
   }
 
   void decodeToPayload(water_level_t waterLevel, float vccVoltage, int16_t bootCount, int16_t execTooLongCount)
@@ -111,9 +119,8 @@ extern "C"
 
     printf("VCC-Voltage: %f Volt)\n", sensor_values.vccVoltage);
 
-    // read LiPo Voltage (max 4.2 Volt)
     sensor_values.waterLevel = getWaterLevel();
-    printf("Water Level is %s  %i \n", sensor_values.waterLevel == HIGH ? "High" : "LOW", sensor_values.waterLevel);
+    printf("Water Level is %i Percent \n", sensor_values.waterLevel);
 
     decodeToPayload(sensor_values.waterLevel, sensor_values.vccVoltage, sensor_values.bootCount, sensor_values.execTooLongCount);
   }

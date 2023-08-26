@@ -42,7 +42,8 @@
 #define U_EXT_MEASURE   (35)    // ADC1_CHANNEL_7
 #define U_BAT_ENABLE     (25)
 #define U_BAT_MEASURE    (34)   // ADC1_CHANNEL_6
-#define WATER_LEVEL_PIN  GPIO_NUM_36   // ROTARY_A
+#define WATER_LEVEL_SENSOR_DOWN  GPIO_NUM_36   // ROTARY_A
+#define WATER_LEVEL_SENSOR_UP    GPIO_NUM_39   // ROTARY_B
 
 // I2C Bus
 #define I2C_SDA         (21)

@@ -10,8 +10,9 @@ extern "C"
 
     typedef enum
     {
-        LOW = 0,
-        HIGH = 1,
+        LOW_0_PERCENT = 0,
+        MEDIUM_50_PERCENT = 50,
+        HIGH_100_PERCENT = 100,
     } water_level_t;
 
     typedef struct
