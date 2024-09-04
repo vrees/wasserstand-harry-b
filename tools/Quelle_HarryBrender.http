@@ -1,0 +1,10 @@
+###
+GET https://eu1.cloud.thethings.network/api/v3/as/applications/harryb-water-level/packages/storage/uplink_message
+Authorization: Bearer NNSXS.DEGKKNCT6SO74WURIT6NM5GUN4NMF2WX22WVCEQ.MQ7FBN4X6T66E2TKYSRJM4WSY7K37GEARRC3O6KFCJJEPWKQR65A
+Accept: text/event-stream
+
+
+###
+GET https://eu1.cloud.thethings.network/api/v3/as/applications/harryb-water-level/devices/madrid-4827e2fffec71940/packages/storage/uplink_message
+Authorization: Bearer NNSXS.DEGKKNCT6SO74WURIT6NM5GUN4NMF2WX22WVCEQ.MQ7FBN4X6T66E2TKYSRJM4WSY7K37GEARRC3O6KFCJJEPWKQR65A
+Accept: text/event-stream
