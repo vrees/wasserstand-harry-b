@@ -28,6 +28,35 @@ cd /opt/ttn-gateway/lora_gateway
 
 sudo journalctl -f
 ```
+## 
+Wlan rak-gateway:
+```
+ssh pi@192.168.178.203
+
+ifconfig
+wlan0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.178.203  netmask 255.255.255.0  broadcast 192.168.178.255
+        inet6 fe80::4ca1:1910:5f86:d51b  prefixlen 64  scopeid 0x20<link>
+        inet6 2003:ea:7f30:5a00:91fe:fbdf:ce38:47b0  prefixlen 64  scopeid 0x0<global>
+        ether b8:27:eb:f4:be:fb  txqueuelen 1000  (Ethernet)
+        RX packets 1660  bytes 151809 (148.2 KiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 329  bytes 51540 (50.3 KiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+
+cat /etc/wpa_supplicant/wpa_supplicant.conf 
+ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+update_config=1
+country=DE
+
+network={
+	ssid="HausRees-Draytek"
+	psk="6422048768813046"
+}
+
+```
+
 
 
 ## /opt/ttn-gateway/packet_forwarder/lora_pkt_fwd/global_conf.json
